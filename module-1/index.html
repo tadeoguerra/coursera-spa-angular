@@ -1,27 +1,38 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="LunchCheck">
   <head>
     <title>Lunch Checker</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+
     <link rel="stylesheet" href="styles/bootstrap.min.css">
     <style>
       .message { font-size: 1.3em; font-weight: bold; }
     </style>
+
   </head>
 <body>
-   <div class="container">
+   <div class="container" ng-controller="LunchCheckController">
      <h1>Lunch Checker</h1>
+     <h5>By @tadex - Empty items or Whitespaces separated by commas are not considered i.e., , , as an item towards to the count.</h5>
 
          <div class="form-group">
-             <input id="lunch-menu" type="text"
+             <input
+             ng-model="lunchOpts"
+             id="lunch-menu"
+             type="text"
              placeholder="list comma separated dishes you usually have for lunch"
-             class="form-control">
+             class="form-control"
+             style="border-color:{{bordercolor}}"
+             >
          </div>
          <div class="form-group">
-             <button class="btn btn-default">Check If Too Much</button>
+             <button class="btn btn-default" ng-click="sendMessage();">Check If Too Much</button>
          </div>
          <div class="form-group message">
            <!-- Your message can go here. -->
+           <span style="color:{{msgcolor}}">{{message}}</span>
          </div>
    </div>
 
